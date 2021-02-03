@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.lucas.hyuntax.mapper.BoardMapper;
 import com.lucas.hyuntax.vo.BoardVO;
+import com.lucas.hyuntax.vo.FileVO;
 import com.lucas.hyuntax.vo.Reply;
 
 @Repository
@@ -120,6 +121,93 @@ public class BoardDAO {
 		try {
 			result = mapper.selectReply(boardSEQ);
 		} catch (Exception e) {
+			e.printStackTrace();
+			return result;
+		}
+		return result;
+	}
+
+	public int insertFile(FileVO fileVo) {
+		int result = 0;
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+
+		try {
+			result = mapper.insertFile(fileVo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return result;
+		}
+		return result;
+	}
+
+	public FileVO selectFile(String boardSEQ) {
+
+		FileVO result = null;
+
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+
+		try {
+			result = mapper.selectFile(boardSEQ);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return result;
+		}
+		return result;
+
+	}
+
+	public FileVO selectFileBySEQ(String fileSEQ) {
+		FileVO result = null;
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+
+		try {
+			result = mapper.selectFileBySEQ(fileSEQ);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return result;
+		}
+		return result;
+	}
+
+	public int deleteReply(String boardSEQ) {
+
+		int result = 0;
+
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+
+		try {
+			result = mapper.deleteReply(boardSEQ);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return result;
+		}
+
+		return result;
+	}
+
+	public int deleteFile(String boardSEQ) {
+
+		int result = 0;
+
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+
+		try {
+			result = mapper.deleteFile(boardSEQ);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return result;
+		}
+		return result;
+	}
+	
+	public int updateFile(FileVO filVo) {
+		int result = 0;
+		
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+		
+		try {
+			result = mapper.updateFile(filVo);
+		}catch(Exception e) {
 			e.printStackTrace();
 			return result;
 		}
