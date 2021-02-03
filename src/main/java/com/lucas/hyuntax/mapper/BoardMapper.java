@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.lucas.hyuntax.vo.BoardVO;
+import com.lucas.hyuntax.vo.FileVO;
 import com.lucas.hyuntax.vo.Reply;
 
 public interface BoardMapper {
@@ -23,4 +24,16 @@ public interface BoardMapper {
 	public ArrayList<HashMap<String, String>> selectReply(String boardSEQ);
 
 	public int writeReply(Reply reply);
+
+	public int insertFile(FileVO fileVo);
+
+	public FileVO selectFile(String boardSEQ);
+
+	public FileVO selectFileBySEQ(String fileSEQ);
+
+	public int deleteReply(String boardSEQ);
+
+	public int deleteFile(String boardSEQ);
+
+	public int updateFile(FileVO fileVo);
 }

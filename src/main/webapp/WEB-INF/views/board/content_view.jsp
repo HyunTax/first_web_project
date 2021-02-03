@@ -68,6 +68,10 @@
 						<td style="width: 40%;">${boardVo.boardDate}</td>
 					</tr>
 					<tr>
+						<td><a href="downloadFile?fileSEQ=${file.fileSEQ}">${file.orgName}</a>
+						</td>
+					</tr>
+					<tr>
 						<td>내용</td>
 						<td colspan="10" style="min-height: 300px; text-align: left;">${boardVo.boardContent}</td>
 					</tr>
@@ -95,13 +99,18 @@
 					</c:if>
 				</div>
 			</div>
+			<br />
 			<form action="/board/writeReply" method="post">
 				<input type="hidden" value="${boardVo.boardSEQ}" name="boardSEQ">
-				<b>댓글 작성</b> <input type="text" class="form-control"
-					name="replyContent" maxlength="100"> <input type="submit"
-					class="btn btn-primary pull-right" value="댓글 작성">
+				<b>댓글 작성</b>
+				<div class="row">
+					<input type="text" class="form-control" name="replyContent"
+						maxlength="100"> <input type="submit"
+						class="btn btn-primary pull-right" value="댓글 작성">
+				</div>
 			</form>
-			<br>
+
+			<br />
 
 			<div class="container">
 				<div class="row">
@@ -112,6 +121,7 @@
 									style="background-color: #eeeeee; text-align: center;">댓글목록
 								</th>
 							</tr>
+
 							<tr>
 								<th
 									style="width: 20%; background-color: #eeeeee; text-align: center;">작성자</th>
@@ -124,8 +134,8 @@
 						<tbody>
 							<c:forEach items="${reply}" var="hMap">
 								<tr>
-									<td>${hMap.REPLYID}</td>
-									<td>${hMap.REPLYCONTENT}</td>
+									<th>${hMap.REPLYID}</th>
+									<th>${hMap.REPLYCONTENT}</th>
 									<td>${hMap.REPLYDATE}</td>
 								</tr>
 							</c:forEach>

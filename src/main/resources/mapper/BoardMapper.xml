@@ -27,6 +27,16 @@
 		boardSEQ=#{boardSEQ}
 	</delete>
 
+	<delete id="deleteReply" parameterType="String">
+		delete from reply where
+		boardSEQ = #{boardSEQ}
+	</delete>
+
+	<delete id="deleteFile" parameterType="String">
+		delete from fileinfo where
+		boardSEQ = #{boardSEQ}
+	</delete>
+
 	<update id="update" parameterType="Board">
 		update board set
 		boardTitle=#{boardTitle}, boardContent=#{boardContent}
@@ -56,5 +66,33 @@
 		order by
 		replyDate
 		DESC
+	</select>
+
+	<insert id="insertFile" parameterType="File">
+		insert into
+		fileinfo(fileSEQ, boardSEQ, orgName, savName) values
+		(fileSEQ.NEXTVAL,
+		(select Max(boardSEQ) from board), #{orgName},
+		#{savName})
+	</insert>
+
+	<select id="selectFile" resultType="File" parameterType="String">
+		select
+		fileSEQ, boardSEQ, orgName, savName from fileinfo where
+		boardSEQ =
+		#{boardSEQ}
+	</select>
+
+	<update id="updateFile" parameterType="File">
+		update fileinfo set
+		orgName = #{orgName}, savName = #{savName} where
+		boardSEQ=#{boardSEQ}
+	</update>
+
+	<select id="selectFileBySEQ" parameterType="String"
+		resultType="File">
+		select fileSEQ, boardSEQ, orgName, savName from fileinfo
+		where fileSEQ =
+		#{fileSEQ}
 	</select>
 </mapper>
