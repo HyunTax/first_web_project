@@ -128,7 +128,9 @@
 								<th
 									style="width: 50%; background-color: #eeeeee; text-align: center;">댓글</th>
 								<th
-									style="width: 30%; background-color: #eeeeee; text-align: center;">작성일</th>
+									style="width: 25%; background-color: #eeeeee; text-align: center;">작성일</th>
+								<th
+									style="width: 5%; background-color: #eeeeee; text-align: center;">비고</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -137,6 +139,16 @@
 									<th>${hMap.REPLYID}</th>
 									<th>${hMap.REPLYCONTENT}</th>
 									<td>${hMap.REPLYDATE}</td>
+									<th><c:if test="${hMap.REPLYID == sessionScope.memberID}">
+											<form action="/board/deleteOneReply" method="post">
+												<input type="hidden" name="boardSEQ"
+													value="${boardVo.boardSEQ}"> <input type="hidden"
+													name="replySEQ" value="${hMap.REPLYSEQ}"> <input
+													type="submit" class="btn btn-primary form-control"
+													value="삭제">
+											</form>
+										</c:if></th>
+
 								</tr>
 							</c:forEach>
 						</tbody>

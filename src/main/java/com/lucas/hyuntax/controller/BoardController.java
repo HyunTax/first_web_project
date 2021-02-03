@@ -165,7 +165,7 @@ public class BoardController {
 
 							boardService.updateFile(fileVo);
 							boardService.update(boardVo);
-							
+
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -191,6 +191,14 @@ public class BoardController {
 		}
 
 		return "redirect:/board/content_view?boardSEQ=" + reply.getBoardSEQ();
+	}
+
+	@RequestMapping(value = "deleteOneReply", method = RequestMethod.POST)
+	public String deleteOneReply(String boardSEQ, String replySEQ) {
+
+		boardService.deleteOneReply(replySEQ);
+
+		return "redirect:/board/content_view?boardSEQ=" + boardSEQ;
 	}
 
 	@RequestMapping(value = "downloadFile", method = RequestMethod.GET)

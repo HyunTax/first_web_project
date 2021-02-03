@@ -68,6 +68,11 @@
 		DESC
 	</select>
 
+	<delete id="deleteOneReply" parameterType="String">
+		delete reply where
+		replySEQ = #{replySEQ}
+	</delete>
+
 	<insert id="insertFile" parameterType="File">
 		insert into
 		fileinfo(fileSEQ, boardSEQ, orgName, savName) values
