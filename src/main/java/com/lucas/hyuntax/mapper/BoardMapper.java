@@ -36,4 +36,6 @@ public interface BoardMapper {
 	public int deleteFile(String boardSEQ);
 
 	public int updateFile(FileVO fileVo);
+
+	public int deleteOneReply(String replySEQ);
 }

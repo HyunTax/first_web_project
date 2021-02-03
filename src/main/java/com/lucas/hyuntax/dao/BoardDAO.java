@@ -19,8 +19,8 @@ public class BoardDAO {
 	SqlSession sqlSession;
 
 	public int write(BoardVO boardVo) {
-
 		int result = 0;
+
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 
 		try {
@@ -33,8 +33,8 @@ public class BoardDAO {
 	}
 
 	public ArrayList<BoardVO> selectAll() {
-
 		ArrayList<BoardVO> boardList = new ArrayList<BoardVO>();
+
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 
 		try {
@@ -47,8 +47,8 @@ public class BoardDAO {
 	}
 
 	public BoardVO selectOne(String boardSEQ) {
-
 		BoardVO result = null;
+
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 
 		try {
@@ -116,6 +116,7 @@ public class BoardDAO {
 
 	public ArrayList<HashMap<String, String>> selectReply(String boardSEQ) {
 		ArrayList<HashMap<String, String>> result = null;
+
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 
 		try {
@@ -127,8 +128,24 @@ public class BoardDAO {
 		return result;
 	}
 
+	public int deleteOneReply(String replySEQ) {
+		int result = 0;
+
+		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
+
+		try {
+			result = mapper.deleteOneReply(replySEQ);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return result;
+		}
+
+		return result;
+	}
+
 	public int insertFile(FileVO fileVo) {
 		int result = 0;
+
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 
 		try {
@@ -141,7 +158,6 @@ public class BoardDAO {
 	}
 
 	public FileVO selectFile(String boardSEQ) {
-
 		FileVO result = null;
 
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
@@ -158,6 +174,7 @@ public class BoardDAO {
 
 	public FileVO selectFileBySEQ(String fileSEQ) {
 		FileVO result = null;
+
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 
 		try {
@@ -170,7 +187,6 @@ public class BoardDAO {
 	}
 
 	public int deleteReply(String boardSEQ) {
-
 		int result = 0;
 
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
@@ -186,7 +202,6 @@ public class BoardDAO {
 	}
 
 	public int deleteFile(String boardSEQ) {
-
 		int result = 0;
 
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
@@ -199,15 +214,15 @@ public class BoardDAO {
 		}
 		return result;
 	}
-	
+
 	public int updateFile(FileVO filVo) {
 		int result = 0;
-		
+
 		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
-		
+
 		try {
 			result = mapper.updateFile(filVo);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return result;
 		}

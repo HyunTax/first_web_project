@@ -63,11 +63,7 @@ public class BoardService {
 		return boardDao.updateFile(fileVo);
 	}
 
-	/*
-	 * public int deleteReply(String boardSEQ) { return
-	 * boardDao.deleteReply(boardSEQ); }
-	 * 
-	 * public int deleteFile(String boardSEQ) { return
-	 * boardDao.deleteFile(boardSEQ); }
-	 */
+	public int deleteOneReply(String replySEQ) {
+		return boardDao.deleteOneReply(replySEQ);
+	}
 }
